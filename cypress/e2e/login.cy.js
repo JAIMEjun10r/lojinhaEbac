@@ -15,49 +15,50 @@ describe('Testando as funcionalidades da página Minha Conta', () => {
   context('Menus', () => {
     it('Averiguando se os menus estão aparecendo', () => {
       cy.exibicaoMenus()
-      
+
     })
+  
   });
   context('Login', () => {
     it('Criando um usuário', () => {
       cy.contains('Sign up').click()
       cy.contains('Register').should('be.visible')
       cy.regEmailSenha(faker.internet.email(), faker.internet.password())
-      
+
     });
-    
-    it.only('Logando com email  e senha válidos', () => {
+
+    it('Logando com email  e senha corretos', () => {
       cy.fixture('perfil').then((dados) => {
-        cy.login()
+        cy.login(Cypress.env('email'), Cypress.env('senha'))
         cy.get('.woocommerce-MyAccount-content > p')
           .should('contain', 'Olá, marli_macedo (não é marli_macedo? Sair)')
         cy.get('.page-title').should('be.visible')
 
       })
     })
-    it('Logando com email e senha inválidos', () => {
+    it('Tentativa de login com email inválido e senha incorreta', () => {
       cy.fixture('perfil').then((dados) => {
         cy.login(dados.emailInvalido, dados.senha)
         cy.get('.woocommerce-error > li').should('be.visible')
-         .and('have.text', '\n\t\t\tEndereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.\t\t')
+          .and('have.text', '\n\t\t\tEndereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.\t\t')
       })
     });
-    it('Logando com email válido e senha inválida', () => {
+    it('Tentativa de login com email válido e senha incorreta', () => {
       cy.fixture('perfil').then((dados) => {
-        cy.login(dados.email, dados.senhaInvalida)
+        cy.login(dados.emailValido, dados.senha)
         cy.get('.woocommerce-error > li').should('be.visible')
-         .and('have.text', '\n\t\t\tErro: a senha fornecida para o e-mail Marli_Macedo@bol.com.br está incorreta. Perdeu a senha?\t\t')
+          .and('have.text', '\n\t\t\tEndereço de e-mail desconhecido. Verifique novamente ou tente seu nome de usuário.\t\t')
       })
     });
-    it('Tentativa de login só digitando o campo Password', () => {
+    it('Tentativa de login só digitando o campo senha', () => {
       cy.fixture('perfil').then((dados) => {
         cy.contains('a', 'Login').click()
         cy.get('#password').type(dados.senha, { log: false })
         cy.get('[name="login"]').click()
         cy.get('.woocommerce-error > li').should('be.visible')
-         .and('have.text', '\n\t\t\tErro: Nome de usuário é obrigatório.\t\t')
+          .and('have.text', '\n\t\t\tErro: Nome de usuário é obrigatório.\t\t')
       })
-    
+
     });
     it('Tentativa de login sem digitar nada', () => {
       cy.contains('a', 'Login').click()
@@ -68,13 +69,14 @@ describe('Testando as funcionalidades da página Minha Conta', () => {
     it('Tentativa de login só digitando o campo username/email', () => {
       cy.fixture('perfil').then((dados) => {
         cy.contains('a', 'Login').click()
-        cy.get('#username').type(dados.email)
+        cy.get('#username').type(dados.emailValido)
         cy.get('[name="login"]').click()
         cy.get('.woocommerce-error > li').should('be.visible')
-         .and('have.text', '\n\t\t\tErro: o campo da senha está vazio.\t\t')
+          .and('have.text', '\n\t\t\tErro: o campo da senha está vazio.\t\t')
       })
+
     });
-    
+
   })
 })
 

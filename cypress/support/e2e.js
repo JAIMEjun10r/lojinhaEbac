@@ -17,5 +17,6 @@
 import './commands'
 import './loginCommands'
 require('cypress-xpath')
+import "cypress-real-events";
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
