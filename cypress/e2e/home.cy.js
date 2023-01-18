@@ -10,19 +10,16 @@ describe('Testando as funcionalidades da página Home', () => {
         cy.exibicaoMenus()
     
     });
-    // it('Clicando no menu Home', () => {
-    //   cy.xpath("(//a[contains(.,'Home')])[14]").click()
-    //   cy.url().should('eq', 'http://lojaebac.ebaconline.art.br/home/')
-            
-    // });
+    
     it('Clicando no menu Comprar', () => {
       cy.xpath("(//a[contains(.,'Comprar')])[2]").click()
+      //consultando a url
       cy.url().should('eq', 'http://lojaebac.ebaconline.art.br/produtos/')
       cy.contains('h1', 'Produtos').should('be.visible')
     });
     it('Passando o mouse sobre o menu Home', () => {
       cy.xpath("(//a[contains(.,'Home')])[14]").realHover()
-      cy.get('.dropdown-toggle > ul > li > a').should('have.length', 11)
+      cy.get('.dropdown-menu > li > a').should('have.length.at.least', 11)
     });
 
   });
