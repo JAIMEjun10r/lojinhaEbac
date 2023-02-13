@@ -14,17 +14,3 @@ Cypress.Commands.add('regEmailSenha', (email, senha) => {
         .should('contain', 'Olá, ')
 })
 
-Cypress.Commands.add('exibicaoMenus', () => {
-    cy.get('.collapse > ul > li').should('have.length', 5)
-      //cy.contains não foi conseguiu checar, entao estou usando o xpath
-      cy.xpath("(//a[contains(.,'Home')])[14]").should('be.visible')
-        .and('have.text', 'Home ')
-      cy.xpath("(//a[contains(.,'Comprar')])[2]").should('be.visible')
-        .and('have.text', 'Comprar')
-      cy.xpath("(//a[contains(.,'Blog')])[5]").should('be.visible')
-        .and('have.text', 'Blog ')
-      cy.xpath("(//a[contains(.,'Categorias')])[2]").should('be.visible')
-        .and('have.text', 'Categorias')
-      cy.xpath("(//a[contains(.,'Mais vendidos')])[2]").should('be.visible')
-        .and('have.text', 'Mais vendidos')
-})
