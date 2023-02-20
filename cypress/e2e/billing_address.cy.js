@@ -1,4 +1,6 @@
 const { faker } = require('@faker-js/faker/locale/pt_BR');
+var faker = require('faker-br')
+
 describe('Testando a página de endereço', () => {
     beforeEach(() => {
         cy.visit('/minha-conta')
@@ -21,9 +23,10 @@ describe('Testando a página de endereço', () => {
                 .should('be.visible')
             cy.cadastroEndereco(
                 faker.name.firstName(), faker.name.lastName(), 'Brasil{enter}',
-                faker.address.streetName(), faker.address.city(), faker.address.state()
+                faker.address.streetName(), faker.address.city(), faker.cep(),
+                faker.address.zipCode()
             )
-
+          
         });
       });
 });
