@@ -18,6 +18,7 @@
     "cypress-xpath": "^2.0.1"
   },
   "dependencies": {
+    "cypress-plugin-steps": "^1.0.2",
     "cypress-real-events": "^1.7.6"
   }
 }

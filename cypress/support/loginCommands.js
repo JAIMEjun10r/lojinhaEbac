@@ -1,5 +1,7 @@
 Cypress.Commands.add('login', (email, senha) => {
-    cy.contains('a', 'Login').click()
+    
+        cy.visit('/minha-conta')
+        cy.contains('a', 'Login').click()
         cy.get('#username').type(email)
         cy.get('#password').type(senha)
         cy.get('[name="login"]').click()

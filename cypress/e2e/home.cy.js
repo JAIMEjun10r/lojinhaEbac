@@ -66,7 +66,7 @@ describe('Testando as funcionalidades da página Home', () => {
         .should('deep.equal', ['HOME ', 'COMPRAR', 'BLOG \nBlog Grid\nBlog Lists\nSingle Post\nBlog With Sidebar', 'CATEGORIAS', 'MAIS VENDIDOS'], { timeout: 8000 })
     });
 
-    it.only('Conferindo se o preço é igual após cicarmos nele', () => {
+    it('Conferindo se o preço é igual após clicarmos nele', () => {
       cy.get('.price > ins > .woocommerce-Price-amount > bdi')
         .eq(5)
         .then(($preco) => {
@@ -83,7 +83,14 @@ describe('Testando as funcionalidades da página Home', () => {
 
 
     });
+    it('Testando todos os links da página', () => {
+      cy.get('a').each( link => {
+        cy.request(link.prop('href'))
+      })
 
+    })
+
+       
   });
 
 });

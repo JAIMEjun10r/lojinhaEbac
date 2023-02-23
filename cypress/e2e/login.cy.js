@@ -10,14 +10,14 @@ describe('Testando as funcionalidades da página Minha Conta', function () {
       .should('eq', 'Minha conta – EBAC – Shop')
     cy.contains('Minha conta')
     cy.contains('Login')
-    
+
   })
   context('Menus', () => {
     it('Averiguando se os menus estão aparecendo', function () {
       cy.exibicaoMenus()
 
     })
-  
+
   });
   context('Login', function () {
     it('Criando um usuário', () => {
@@ -28,13 +28,12 @@ describe('Testando as funcionalidades da página Minha Conta', function () {
     });
 
     it.only('Logando com email  e senha corretos', function () {
-      cy.fixture('perfil').then((dados) => {
-        cy.login(Cypress.env('email'), Cypress.env('senha'))
-        cy.get('.woocommerce-MyAccount-content > p')
-          .should('contain', 'Olá, marli_macedo (não é marli_macedo? Sair)')
-        cy.get('.page-title').should('be.visible')
+      cy.login(Cypress.env('email'), Cypress.env('senha'))
+      cy.get('.woocommerce-MyAccount-content > p')
+        .should('contain', 'Olá, marli_macedo (não é marli_macedo? Sair)')
+      cy.get('.page-title').should('be.visible')
 
-      })
+
     })
     it('Tentativa de login com email inválido e senha incorreta', function () {
       cy.fixture('perfil').then((dados) => {
@@ -76,7 +75,7 @@ describe('Testando as funcionalidades da página Minha Conta', function () {
       })
 
     });
-    
+
   })
 })
 
