@@ -30,7 +30,7 @@ describe('Testando as funcionalidades da página Minha Conta', function () {
     it.only('Logando com email  e senha corretos', function () {
       cy.login(Cypress.env('email'), Cypress.env('senha'))
       cy.get('.woocommerce-MyAccount-content > p')
-        .should('contain', 'Olá, marli_macedo (não é marli_macedo? Sair)')
+        .should('contain', 'Olá, benjamin33 (não é benjamin33? Sair)')
       cy.get('.page-title').should('be.visible')
 
 

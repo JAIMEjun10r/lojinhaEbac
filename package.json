@@ -13,7 +13,7 @@
   "devDependencies": {
     "@faker-js/faker": "^7.6.0",
     "cy-spok": "^1.6.1",
-    "cypress": "^12.3.0",
+    "cypress": "^12.6.0",
     "cypress-map": "^1.12.3",
     "cypress-xpath": "^2.0.1"
   },
