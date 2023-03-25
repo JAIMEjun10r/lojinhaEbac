@@ -33,32 +33,26 @@ describe('Testando a página de endereço', () => {
     });
 
     it.only('Cadastrando Endereço', () => {
-      // it('Cadastrando um endereço com todos os dados corretos', () => {
-      cy.fixture('enderecos').then((dados) => {
+        cy.fixture('enderecos').then((dados) => {
         cy.visit('/minha-conta')
         cy.step('Clicando em Endereço')
         cy.contains('a', 'Endereços').click()
         cy.contains('h3', 'Billing Address')
           .should('be.visible')
-        cy.xpath("//a[@href='http://lojaebac.ebaconline.art.br/minha-conta/edit-address/faturamento/'][contains(.,'Edit')]")
-          .click()
+        cy.get(':nth-child(1) > .title > .edit').click()
         cy.contains('h3', 'Endereço de faturamento')
           .should('be.visible')
         cy.cadastroEndereco(dados[0].nome, dados[0].sobrenome, dados[0].país,
-                            dados[0].endereco, dados[0].complemento, dados[0].cidade)
+        dados[0].endereco, dados[0].complemento, dados[0].cidade, dados[0].estado,
+        dados[0].cep, dados[0].telefone)
+        cy.get('.button').click()
+        
       })
+      
+
 
     });
 
-    it('teste2', () => {
-      cy.visit('/minha-conta')
-      cy.contains('a', 'Pedidos')
-        .click()
-    });
-
-    it('outro teste', () => {
-      cy.visit('/minha-conta')
-      cy.contains('a', 'Detalhes da conta')
-    });
+      
   });
 });

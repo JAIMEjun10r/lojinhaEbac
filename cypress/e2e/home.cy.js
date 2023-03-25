@@ -12,6 +12,9 @@ describe('Testando as funcionalidades da página Home', () => {
       cy.exibicaoMenus()
 
     });
+    it.only('testeteste', () => {
+      cy.contains('a[href="home"]').click()
+    });
 
     it('Clicando no menu Comprar', () => {
       cy.contains('Comprar').click({ force: true })

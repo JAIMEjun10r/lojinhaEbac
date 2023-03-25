@@ -6,6 +6,8 @@
         "endereco": "Rua Francisco",
         "complemento": "Apartamento 200",
         "cidade": "Bangu",
-        "estado": "Rio de Janeiro"
+        "estado": "Rio de Janeiro{enter}",
+        "cep": "27935879",
+        "telefone": "21212121"
     }
 ]
