@@ -32,7 +32,7 @@ describe('Testando a página de endereço', () => {
 
     });
 
-    it.only('Cadastrando Endereço', () => {
+    it('Cadastrando Endereço', () => {
         cy.fixture('enderecos').then((dados) => {
         cy.visit('/minha-conta')
         cy.step('Clicando em Endereço')
